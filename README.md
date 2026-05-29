@@ -14,7 +14,7 @@
 ### 1. Clone & Install
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/krishi-ai.git
+git clone https://github.com/anish-2025dev/krishi-ai.git
 cd krishi-ai
 
 # Install backend
