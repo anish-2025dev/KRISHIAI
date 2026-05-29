@@ -124,7 +124,7 @@ cd krishi-ai
 git init
 git add .
 git commit -m "Initial commit — KrishiAI full stack"
-git remote add origin https://github.com/YOUR_USERNAME/krishi-ai.git
+git remote add origin https://github.com/anish-2025dev/krishi-ai.git
 git push -u origin main
 ```
 
