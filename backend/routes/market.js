@@ -18,7 +18,7 @@ const BASE_PRICES = {
   chickpea: { min: 5000, max: 5700, unit: 'quintal', msp: 5440 },
 };
 
-// GET /api/market/prices
+// GET /api/market/prices?state=Rajasthan&commodity=Wheat
 router.get('/prices', async (req, res) => {
   try {
     const { state = 'Rajasthan', commodity = '' } = req.query;
@@ -78,7 +78,8 @@ router.get('/prices', async (req, res) => {
           const minP = Number(r.min_price) || 0;
           const maxP = Number(r.max_price) || 0;
 
-          const base = BASE_PRICES[r.commodity?.toLowerCase()];
+          const base =
+            BASE_PRICES[r.commodity?.toLowerCase()];
 
           const change = parseFloat(
             ((Math.random() - 0.45) * 6).toFixed(1)
@@ -86,12 +87,15 @@ router.get('/prices', async (req, res) => {
 
           return {
             crop: r.commodity,
-            crop_hindi: getCropHindi(r.commodity?.toLowerCase()),
+            crop_hindi: getCropHindi(
+              r.commodity?.toLowerCase()
+            ),
             variety: r.variety || 'General',
             market: r.market || r.district,
             district: r.district,
             current_price:
-              modal || Math.round((minP + maxP) / 2),
+              modal ||
+              Math.round((minP + maxP) / 2),
             min_price: minP,
             max_price: maxP,
             msp: base?.msp || null,
@@ -121,7 +125,8 @@ router.get('/prices', async (req, res) => {
 
     const prices = Object.entries(BASE_PRICES).map(
       ([crop, data]) => {
-        const variance = (Math.random() - 0.5) * 200;
+        const variance =
+          (Math.random() - 0.5) * 200;
 
         const current = Math.round(
           (data.min + data.max) / 2 + variance
@@ -165,7 +170,7 @@ router.get('/prices', async (req, res) => {
   }
 });
 
-// GET /api/market/predict
+// GET /api/market/predict?crop=wheat&state=Rajasthan
 router.get('/predict', async (req, res) => {
   try {
     const {
@@ -242,7 +247,7 @@ Respond ONLY with valid JSON.
   }
 });
 
-// GET /api/market/mandis
+// GET /api/market/mandis?lat=26.9&lon=75.8
 router.get('/mandis', async (req, res) => {
   try {
     const {
@@ -311,6 +316,20 @@ router.get('/mandis', async (req, res) => {
             'Fruits',
           ],
         },
+        {
+          id: 'm2',
+          name: 'Chomu Grain Market',
+          address: 'Chomu, Jaipur',
+          distance: '28 km',
+          lat: 27.15,
+          lng: 75.72,
+          timing: '7AM-12PM',
+          crops: [
+            'Wheat',
+            'Mustard',
+            'Bajra',
+          ],
+        },
       ];
     }
 
@@ -326,7 +345,7 @@ router.get('/mandis', async (req, res) => {
   }
 });
 
-// GET /api/market/search
+// GET /api/market/search?state=Rajasthan&commodity=Wheat&district=Jaipur
 router.get('/search', async (req, res) => {
   try {
     const {
@@ -350,6 +369,19 @@ router.get('/search', async (req, res) => {
     if (district)
       filters.district = district;
 
+    const today2 = new Date();
+    const week = new Date(today2);
+
+    week.setDate(week.getDate() - 7);
+
+    const fmt = (d) =>
+      `${String(d.getDate()).padStart(
+        2,
+        '0'
+      )}/${String(
+        d.getMonth() + 1
+      ).padStart(2, '0')}/${d.getFullYear()}`;
+
     const { data } = await axios.get(
       `https://api.data.gov.in/resource/${AGRID}`,
       {
@@ -358,6 +390,8 @@ router.get('/search', async (req, res) => {
           format: 'json',
           limit: parseInt(limit, 10),
           filters: JSON.stringify(filters),
+          from: fmt(week),
+          to: fmt(today2),
         },
         timeout: 10000,
       }
