@@ -13,13 +13,29 @@ app.set('trust proxy', 1);
 
 // ── Security Middleware ──────────────────────────────────────────
 app.use(helmet({ crossOriginResourcePolicy: false }));
+const ALLOWED_ORIGINS = [
+  process.env.CLIENT_URL,
+  process.env.CLIENT_URL_2,
+  'http://localhost:3000',
+  'http://localhost:3001',
+].filter(Boolean)
+
 app.use(cors({
-  origin: function(origin, callback) { callback(null, true); },
+  origin: function(origin, callback) {
+    // Allow requests with no origin (mobile apps, curl, Postman)
+    if (!origin) return callback(null, true)
+    if (ALLOWED_ORIGINS.includes(origin)) {
+      callback(null, true)
+    } else {
+      callback(null, true) // Still allow all for now
+    }
+  },
   credentials: true,
   methods: ['GET','POST','PUT','DELETE','OPTIONS'],
   allowedHeaders: ['Content-Type','Authorization'],
 }));
 app.options('*', cors());
+
 
 // ── Rate Limiting ────────────────────────────────────────────────
 const limiter = rateLimit({
