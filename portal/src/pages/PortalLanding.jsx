@@ -130,7 +130,7 @@ export default function PortalLanding() {
       {/* FOOTER */}
       <footer style={{ borderTop:'1px solid rgba(59,130,246,.1)', padding:'24px 32px', display:'flex', justifyContent:'space-between', alignItems:'center', flexWrap:'wrap', gap:12 }}>
         <span style={{ fontWeight:800, color:'#e2e8f0' }}>Krishi<span style={{ color:'#3b82f6' }}>Portal</span></span>
-        <p style={{ fontSize:'.75rem', color:'#334155' }}>© 2024 KrishiAI · Business Portal</p>
+        <p style={{ fontSize:'.75rem', color:'#334155' }}>© 2026 KrishiAI · Business Portal</p>
         <a href="https://krishiai-mocha.vercel.app" target="_blank" rel="noreferrer" style={{ fontSize:'.78rem', color:'#4ade80', textDecoration:'none', fontWeight:600 }}>
           🌾 Farmer App ↗
         </a>
