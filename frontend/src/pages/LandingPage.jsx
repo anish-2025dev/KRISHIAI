@@ -217,7 +217,7 @@ export default function LandingPage() {
           <div style={{ width:28, height:28, borderRadius:8, background:'linear-gradient(135deg,#4caf50,#1b5e20)', display:'flex', alignItems:'center', justifyContent:'center', fontSize:14 }}>🌿</div>
           <span style={{ fontWeight:800, color:'#e8f5e9', fontSize:'.95rem' }}>KrishiAI</span>
         </div>
-        <p style={{ color:'#2d4d2e', fontSize:'.75rem' }}>© 2024 KrishiAI · Empowering Indian Farmers with AI</p>
+        <p style={{ color:'#2d4d2e', fontSize:'.75rem' }}>© 2026 KrishiAI · Empowering Indian Farmers with AI</p>
         <div style={{ display:'flex', gap:20 }}>
           {['Privacy','Terms','Contact'].map(l => (
             <span key={l} style={{ color:'#3d6b40', fontSize:'.78rem', cursor:'pointer', fontWeight:500 }}>{l}</span>
