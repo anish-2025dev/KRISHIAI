@@ -50,6 +50,7 @@ app.use('/api/market',  require('./routes/market'));
 app.use('/api/farmer',  require('./routes/farmer'));
 app.use('/api/sms',     require('./routes/sms'));
 app.use('/api/profile', require('./routes/profile'));
+app.use('/api/portal',  require('./routes/portal'));
 
 // ── Health Check ─────────────────────────────────────────────────
 app.get('/health', (req, res) => {

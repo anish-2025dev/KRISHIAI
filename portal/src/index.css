@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Sora',sans-serif;background:#0a0f1a;color:#e2e8f0;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:#0a0f1a}
+::-webkit-scrollbar-thumb{background:#3b82f6;border-radius:4px}
+::selection{background:rgba(59,130,246,.3);color:#bfdbfe}
+
+.card{background:linear-gradient(145deg,rgba(15,23,42,.9),rgba(10,15,30,.95));border:1px solid rgba(59,130,246,.15);border-radius:16px;backdrop-filter:blur(10px);transition:all .3s}
+.card:hover{border-color:rgba(59,130,246,.35);transform:translateY(-2px);box-shadow:0 12px 40px rgba(0,0,0,.4)}
+
+.btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:700;border-radius:100px;transition:all .3s;background:linear-gradient(135deg,#3b82f6,#1d4ed8);color:white;border:none;cursor:pointer;font-family:'Sora',sans-serif}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(59,130,246,.4)}
+.btn-primary:disabled{opacity:.6;cursor:not-allowed;transform:none}
+
+.btn-outline{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:600;border-radius:100px;transition:all .3s;background:transparent;color:#93c5fd;border:1.5px solid #1d4ed8;cursor:pointer;font-family:'Sora',sans-serif}
+.btn-outline:hover{background:rgba(59,130,246,.1);border-color:#3b82f6;transform:translateY(-1px)}
+
+.btn-green{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:700;border-radius:100px;transition:all .3s;background:linear-gradient(135deg,#10b981,#059669);color:white;border:none;cursor:pointer;font-family:'Sora',sans-serif}
+.btn-green:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(16,185,129,.4)}
+
+.btn-orange{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:700;border-radius:100px;transition:all .3s;background:linear-gradient(135deg,#f59e0b,#d97706);color:white;border:none;cursor:pointer;font-family:'Sora',sans-serif}
+.btn-orange:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(245,158,11,.4)}
+
+.input-field{background:rgba(15,23,42,.8);border:1px solid rgba(59,130,246,.2);border-radius:12px;padding:11px 16px;color:#e2e8f0;font-family:'Sora',sans-serif;font-size:.875rem;width:100%;transition:border-color .2s;outline:none}
+.input-field:focus{border-color:#3b82f6}
+.input-field::placeholder{color:#334155}
+
+select.input-field{cursor:pointer}
+textarea.input-field{resize:vertical;min-height:100px}
+
+.sidebar-link{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;font-size:.85rem;font-weight:500;cursor:pointer;transition:all .2s;color:#475569;text-decoration:none}
+.sidebar-link:hover{background:rgba(59,130,246,.1);color:#93c5fd}
+.sidebar-link.active{background:rgba(59,130,246,.15);color:#93c5fd;border:1px solid rgba(59,130,246,.25)}
+
+.badge{display:inline-flex;align-items:center;padding:3px 10px;border-radius:100px;font-size:.7rem;font-weight:700}
+.badge-blue{background:rgba(59,130,246,.15);color:#60a5fa;border:1px solid rgba(59,130,246,.3)}
+.badge-green{background:rgba(16,185,129,.15);color:#34d399;border:1px solid rgba(16,185,129,.3)}
+.badge-orange{background:rgba(245,158,11,.15);color:#fbbf24;border:1px solid rgba(245,158,11,.3)}
+.badge-red{background:rgba(239,68,68,.15);color:#f87171;border:1px solid rgba(239,68,68,.3)}
+.badge-purple{background:rgba(139,92,246,.15);color:#a78bfa;border:1px solid rgba(139,92,246,.3)}
+
+.glow-blue{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;background:radial-gradient(circle,rgba(59,130,246,.2) 0%,transparent 70%)}
+
+@media(max-width:767px){
+  .hide-mobile{display:none!important}
+  .full-mobile{width:100%!important}
+  input,select,textarea{font-size:16px!important}
+}
+@media(min-width:768px){
+  aside{transform:translateX(0)!important;position:sticky!important;height:100vh}
+  .hide-desktop{display:none!important}
+}
